@@ -14,9 +14,28 @@
 
 @implementation HistoryViewController
 
+-(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    self = [self initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if(self) {
+   
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.historyLabel.numberOfLines = 0;
+
     // Do any additional setup after loading the view.
+    
+    NSMutableString *text = [[NSMutableString alloc]init];
+    for(NSNumber *n in history) {
+        [text appendFormat:@"%@\n", n];
+    }
+    
+    self.historyLabel.text = text;
+    self.historyLabel.backgroundColor = [UIColor redColor];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,6 +43,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void) setHistory:(NSMutableArray *)h {
+    history = h;
+}
 /*
 #pragma mark - Navigation
 

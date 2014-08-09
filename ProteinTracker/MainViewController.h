@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  MainViewController.h
 //  ProteinTracker
 //
 //  Created by HUGE | Atish Narlawar on 8/6/14.
@@ -7,8 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HistoryViewController.h"
 
-@interface ViewController : UIViewController
+@interface MainViewController : UIViewController {
+    int total;
+    NSMutableArray *amountHistory;
+}
+
+@property (weak, nonatomic) IBOutlet UILabel *totalLabel;
+@property (weak, nonatomic) IBOutlet UILabel *goalLabel;
+@property (weak, nonatomic) IBOutlet UITextField *amountText;
+
+- (IBAction)addProtein:(id)sender;
+- (IBAction)unwindToMain:(UIStoryboardSegue *)segue;
+- (void) goalChanged:(NSNotification *) notification;
 
 
 @end
